@@ -1,34 +1,37 @@
 import React, { useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-
-const NavLink = ({ label, onClick }) => (
-  <li
-    className="hover:text-purple-300 cursor-pointer transition-colors duration-300"
-    onClick={onClick}
-  >
-    {label}
-  </li>
-);
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  // Centralized list of navigation links
+  const navLinks = [
+    { label: "Home", path: "/" },
+    { label: "About", path: "/about" }, // Links to AboutHero
+    { label: "Works", path: "/works" },
+    { label: "Contact", path: "/Contact" },
+    
+  ];
+
   return (
     <div className="fixed top-4 left-0 w-full flex justify-center items-center z-50 px-2">
       <nav className="h-16 w-full max-w-[900px] px-4 rounded-full bg-[#1E2240] flex items-center shadow-lg relative">
         {/* Logo */}
-        <div className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-full bg-gradient-to-tr from-purple-400 to-pink-400 flex justify-center items-center text-white font-bold text-lg">
             +
           </div>
           <h1 className="text-white font-extrabold italic text-lg">Luminex</h1>
-        </div>
+        </Link>
 
         {/* Desktop Links */}
         <ul className="hidden md:flex gap-6 text-white font-medium absolute left-1/2 transform -translate-x-1/2">
-          {["Home", "About", "Works", "Pricing", "Blog"].map((item) => (
-            <NavLink key={item} label={item} />
+          {navLinks.map(({ label, path }) => (
+            <li key={label} className="hover:text-purple-300 transition-colors duration-300">
+              <Link to={path}>{label}</Link>
+            </li>
           ))}
         </ul>
 
@@ -50,7 +53,7 @@ const Nav = () => {
           </button>
         </div>
 
-        {/* Menu Icon */}
+        {/* Mobile Menu Toggle */}
         <div className="flex md:hidden items-center absolute right-4">
           <button
             onClick={toggleMenu}
@@ -72,12 +75,16 @@ const Nav = () => {
           } md:hidden`}
         >
           <ul className="flex flex-col items-center gap-5 py-5 text-white font-medium">
-            {["Home", "About", "Works", "Pricing", "Blog"].map((item) => (
-              <NavLink
-                key={item}
-                label={item}
-                onClick={() => setIsMenuOpen(false)}
-              />
+            {navLinks.map(({ label, path }) => (
+              <li key={label}>
+                <Link
+                  to={path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="hover:text-purple-300 transition-colors duration-300"
+                >
+                  {label}
+                </Link>
+              </li>
             ))}
             <button className="bg-gray-500 h-12 hover:bg-gray-600 text-white font-medium px-6 py-2 rounded-full">
               Send Inquiry

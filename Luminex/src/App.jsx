@@ -1,30 +1,24 @@
-import React from 'react'
-import Nav from './Components/1 Home/nav'
-import Home from './Components/1 Home/Home'
-import Marque from './Components/1 Home/Marque'
-import Besidemarque from './Components/1 Home/Besidemarque'
-import SmartService from './Components/1 Home/smartService'
-import DigitalGrowth from './Components/1 Home/digitalGrowth'
-import Feedback from './Components/1 Home/Feedback'
-import FaqPage from './Components/1 Home/FaqPage'
-import ResultsPage from './Components/1 Home/ResultsPage'
-import FooterPage from './Components/1 Home/FooterPage'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Nav from "./Components/Nav";
+import Home from "./Components/Home";
+import AboutHero from "./Pages/About/AboutHero";
+import FooterPage from "./Components/FooterPage";
+import ContactHero from "./Pages/Contact/Contacthero";
 
-const App = () => {
-  return (
-    <div>
-      <Nav/>
-      <Home/>
-      <Marque/>
-      <Besidemarque/>
-      <SmartService/>
-      <DigitalGrowth/>
-      <Feedback/>
-      <FaqPage/>
-      <ResultsPage/>
-      <FooterPage/>
-    </div>
-  )
-}
+const App = () => (
+  <BrowserRouter>
+    <Nav />
 
-export default App
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<AboutHero />} />
+      <Route path="/Contact" element={<ContactHero/>}  />
+    </Routes>
+
+    <FooterPage />
+  </BrowserRouter>
+);
+
+export default App;
+
+

@@ -1,14 +1,22 @@
+
 import React, { useState, useEffect } from "react";
 import { ArrowUpRight } from "lucide-react";
+import About1 from "./About1";
+import About2 from "./About2";
+import About3 from "./About3";
+import About4 from "./About4";
 
-const Home = () => {
-  const [animate, setAnimate] = useState(false);
-
-  useEffect(() => {
-    setAnimate(true);
-  }, []);
+const AboutHero = () => {
+    const [animate, setAnimate] = useState(false);
+    
+      useEffect(() => {
+        setAnimate(true);
+      }, []);
 
   return (
+
+    <>
+
     <div className="relative h-[110vh] w-full bg-cover bg-center bg-[url('https://cdn.prod.website-files.com/683970e766b2814fc9e591a4/683c04cccc75e24bfe6dc48a_banner%20bg-p-2000.webp')]">
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D33]/70 to-[#7B59FF]/50"></div>
@@ -25,12 +33,12 @@ const Home = () => {
           text-[clamp(2.5rem,7vw,6rem)] sm:text-[clamp(3rem,6vw,6.5rem)] lg:text-[clamp(4rem,5vw,8rem)]
           break-words"
         >
-          <span className="block">Marketing that</span>
+          <span className="block">We are <span className='instrument-serif-regular-italic tracking-tighter'>super</span></span>
           <span className="block">
             <span className="instrument-serif-regular-italic tracking-tighter">
-              moves the
+              growth
             </span>{" "}
-            <span className="font-semibold">Needle</span>
+            <span className="font-semibold">Team</span>
           </span>
         </h1>
 
@@ -52,12 +60,7 @@ const Home = () => {
             md:translate-x-[-2rem]
           "
         >
-          {/* White Arrow Image - hidden under 768px */}
-          <img
-            src="https://cdn.prod.website-files.com/683970e766b2814fc9e591a4/683970e766b2814fc9e5922a_Vector%201.svg"
-            alt="arrow"
-            className="w-16 h-16 md:w-20 md:h-20 rotate-1 translate-y-6 hidden sm:block"
-          />
+        
 
           {/* Let's Contact Button */}
           <button className="relative flex items-center gap-3 bg-white text-black font-medium px-5 py-3 md:px-6 rounded-full overflow-hidden group">
@@ -97,8 +100,17 @@ const Home = () => {
           </a>
         </div>
       </div>
-    </div>
-  );
-};
 
-export default Home;
+    </div>
+
+          {/* Other Sections */}
+
+          <About1/>
+          <About2/>
+          <About3/>
+          <About4/>
+    </>
+  )
+}
+
+export default AboutHero
